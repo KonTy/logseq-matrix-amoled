@@ -25,7 +25,7 @@ jobs:
       - name: Run semantic-release
         id: semantic_release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GT_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}  # Add this if you are publishing to npm
         run: npx semantic-release
 
@@ -38,7 +38,7 @@ jobs:
 
       - name: Get the release URL
         id: get_release
-        run: echo "::set-output name=upload_url::$(jq -r '.upload_url' <<< $(curl -sH "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/releases/latest))"
+        run: echo "::set-output name=upload_url::$(jq -r '.upload_url' <<< $(curl -sH "Authorization: token ${{ secrets.GT_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/releases/latest))"
 
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
