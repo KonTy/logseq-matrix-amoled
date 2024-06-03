@@ -24,8 +24,8 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
+          git config --global user.email "KonTy@github.com"
+          git config --global user.name "KonTy"
       
       - name: Print repository URL
         run: |
@@ -34,7 +34,7 @@ jobs:
       - name: Run semantic-release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Ensure GH_TOKEN is set in GitHub secrets
-        run: npx semantic-release
+        run: npx semantic-release --no-ci
 
       - name: Get version from package.json
         id: get_version
