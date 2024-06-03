@@ -14,24 +14,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       - uses: actions/setup-node@v3
         with:
-          node-version: '20.8.1'  # Update to the required Node.js version
+          node-version: '20.8.1'  # Ensure this matches semantic-release requirements
 
       - name: Install dependencies
         run: npm ci  # Use npm ci to install dependencies, including dev dependencies
-        
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+      
       - name: Run semantic-release
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}  # Add this if you are publishing to npm
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Ensure GH_TOKEN is set in GitHub secrets
         run: npx semantic-release
-        
+
       - name: Get version from package.json
         id: get_version
         run: echo "VERSION=$(jq -r .version < package.json)" >> $GITHUB_ENV
-        
+
       - name: Create ZIP file
         run: zip -r build-${{ env.VERSION }}.zip ./*
 
@@ -41,7 +45,7 @@ jobs:
           RELEASE_DATA=$(curl -sH "Authorization: token ${{ secrets.GH_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/releases/latest)
           UPLOAD_URL=$(echo $RELEASE_DATA | jq -r '.upload_url' | sed 's/{?name,label}//')
           echo "::set-output name=upload_url::$UPLOAD_URL"
-      
+
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         with:
