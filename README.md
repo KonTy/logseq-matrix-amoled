@@ -6,7 +6,7 @@ This theme is inspired by the movie Matrix
 
 Features:
 - providing customezation for all major components
-- Doesn't support white theme
+- doesn't support white theme
 
 ## Usage
 
