@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   release:
@@ -25,19 +26,17 @@ jobs:
       - name: Zip files
         run: zip -r logseq-matrix-amoled-${{ env.version }}.zip ./*
 
-      - name: Check if tag exists
-        id: tag_exists
+      - name: Check if tag exists and delete if exists
         run: |
           if git rev-parse "refs/tags/${{ env.version }}" >/dev/null 2>&1; then
             echo "Tag ${{ env.version }} already exists."
-            echo "tag_exists=true" >> $GITHUB_ENV
+            git tag -d ${{ env.version }}
+            git push --delete origin ${{ env.version }}
           else
             echo "Tag ${{ env.version }} does not exist."
-            echo "tag_exists=false" >> $GITHUB_ENV
 
       - name: Create Release
         id: create_release
-        if: env.tag_exists == 'false'
         uses: actions/create-release@v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -48,7 +47,6 @@ jobs:
           prerelease: false
 
       - name: Upload release asset
-        if: env.tag_exists == 'false'
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
