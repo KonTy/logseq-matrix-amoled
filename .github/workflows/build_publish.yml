@@ -26,6 +26,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Get version from package.json
+        id: get_version
+        run: echo "VERSION=$(jq -r .version < package.json)" >> $GITHUB_ENV
+        
       - name: Upload release zip
         uses: actions/upload-artifact@v2
         with:
