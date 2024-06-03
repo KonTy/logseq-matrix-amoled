@@ -12,24 +12,24 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
       - name: Get package version
         id: package_version
         run: |
           version=$(jq -r .version < package.json)
           echo "::set-output name=version::$version"
       
-      - name: Install jq
-        run: sudo apt-get install -y jq
-
       - name: Zip files
         run: zip -r logseq-matrix-amoled-${{ steps.package_version.outputs.version }}.zip ./*
       
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v1.1.4
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.package_version.outputs.version }}
           release_name: Release ${{ steps.package_version.outputs.version }}
@@ -39,7 +39,7 @@ jobs:
       - name: Upload release asset
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./logseq-matrix-amoled-${{ steps.package_version.outputs.version }}.zip
