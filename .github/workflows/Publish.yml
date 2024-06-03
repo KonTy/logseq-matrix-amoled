@@ -27,6 +27,10 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
       
+      - name: Print repository URL
+        run: |
+          echo "Repository URL: https://github.com/${{ github.repository }}"
+      
       - name: Run semantic-release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Ensure GH_TOKEN is set in GitHub secrets
@@ -42,10 +46,12 @@ jobs:
       - name: Get the release URL
         id: get_release
         run: |
+          echo "Fetching release data from GitHub API"
           RELEASE_DATA=$(curl -sH "Authorization: token ${{ secrets.GH_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/releases/latest)
+          echo "Release data: $RELEASE_DATA"
           UPLOAD_URL=$(echo $RELEASE_DATA | jq -r '.upload_url' | sed 's/{?name,label}//')
           echo "::set-output name=upload_url::$UPLOAD_URL"
-
+      
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         with:
