@@ -17,10 +17,10 @@ jobs:
       
       - uses: actions/setup-node@v2
         with:
-          node-version: '18'  # Update this as necessary
+          node-version: '18'  # Ensure this matches semantic-release requirements
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci  # Use npm ci to install dependencies, including dev dependencies
         
       - name: Run semantic-release
         env:
