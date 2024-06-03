@@ -13,5 +13,6 @@
         ],
         "id": "logseq-matrixamoled-theme",
         "icon": "./logo.png"
-    }
+    },
+    "repositoryUrl": "https://github.com/KonTy/logseq-matrix-amoled/"    
 }
