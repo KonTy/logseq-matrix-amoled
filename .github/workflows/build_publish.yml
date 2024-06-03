@@ -1,0 +1,54 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Get version from package.json
+        id: get_version
+        run: echo "VERSION=$(jq -r .version < package.json)" >> $GITHUB_ENV
+
+      - name: Zip files
+        run: zip -r logseq-matrix-amoled-${{ env.VERSION }}.zip ./*
+        working-directory: .
+  
+  release:
+    name: Create GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload release zip
+        uses: actions/upload-artifact@v2
+        with:
+          name: release
+          path: logseq-matrix-amoled-${{ env.VERSION }}.zip
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          tag_name: ${{ env.VERSION }}  # Specify the tag name for the release
+          release_name: Release ${{ env.VERSION }}  # Specify the release name
+          draft: false
+          prerelease: false
+
+      - name: Upload release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./logseq-matrix-amoled-${{ env.VERSION }}.zip
+          asset_name: logseq-matrix-amoled-${{ env.VERSION }}.zip
+          asset_content_type: application/zip
