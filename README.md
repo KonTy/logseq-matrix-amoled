@@ -14,6 +14,5 @@ Features:
 This theme is available in the Marketplace.
 
 ## Demo 
-
 ![demo](./demo.png)
 
