@@ -14,5 +14,8 @@
         "id": "logseq-matrixamoled-theme",
         "icon": "./logo.png"
     },
-    "repositoryUrl": "https://github.com/KonTy/logseq-matrix-amoled/"    
+    "repositoryUrl": "https://github.com/KonTy/logseq-matrix-amoled/",
+     "devDependencies": {
+        "semantic-release": "^24.0.0"
+      }
 }
