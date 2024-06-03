@@ -1,0 +1,17 @@
+{
+    "name": "Matrix AMOLED Theme",
+    "author": "Matrix",
+    "version": "v1.0",
+    "description": "Matrix AMOLED theme, pure black background, no light theme",
+    "logseq": {
+        "themes": [
+            {
+                "name": "Matrix AMOLED Dark",
+                "url": "./custom.css",
+                "mode": "dark"
+            }
+        ],
+        "id": "logseq-matrixamoled-theme",
+        "icon": "./logo.png"
+    }
+}
