@@ -1,5 +1,5 @@
 {
-    "name": "matrix-amoled-theme",
+    "name": "logseq-matrixamoled-theme",
     "author": "KonTy",
     "version": "1.0.0",
     "description": "Matrix AMOLED theme, pure black background, no light theme",
@@ -7,7 +7,7 @@
         "themes": [
             {
                 "name": "Matrix AMOLED Dark",
-                "url": "./custom.css",
+                "url": "./matrix.css",
                 "mode": "dark"
             }
         ],

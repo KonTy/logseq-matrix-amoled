@@ -410,6 +410,8 @@ html[data-theme="dark"] .cp__header a:hover {
   color: var(--ls-primary-text-color);
 }
 
+/*********************************************************/
+
 /* Highlights */
 
 html[data-theme="dark"] mark {
@@ -417,12 +419,16 @@ html[data-theme="dark"] mark {
   color: white;
 }
 
+/*********************************************************/
+
 /* Highlight search term in searches */
 
 html[data-theme="dark"] .chosen mark {
   background: black;
   color: rgba(255, 255, 255, 0.936);
 }
+
+/*********************************************************/
 
 /* Text area */
 
@@ -436,6 +442,8 @@ html[data-theme="dark"] ::selection {
   color: var(---ls-selection-text-color) !important;
 }
 
+/*********************************************************/
+
 /* Bullet container bullets */
 
 html[data-theme="dark"] .bullet-container .bullet {
@@ -448,6 +456,8 @@ html[data-theme="dark"] .bullet-container.as-order-list.typed-list .bullet {
   background-color: none;
   color: white;
 }
+
+/*********************************************************/
 
 /* SVG icons */
 
@@ -463,7 +473,10 @@ html[data-theme="dark"] #repo-name {
 /* Settings menu dropdown div */
 
 html[data-theme="dark"] .dropdown-wrapper {
-  border: 1px solid white !important;
+  border: 1px solid #ffb012; /* Optional: Add a solid border for better visibility */
+  padding: 1px; /* Optional: Add padding to the element */
+  box-shadow: 0 0 1px 2px rgba(255, 176, 18, 0.75); /* Create the glow effect */
+  background-color: #fff; /* Optional: Background color for the element */
 }
 
 /* Search box and modals */
@@ -489,7 +502,7 @@ html[data-theme="dark"] a.chosen .breadcrumb.block-parents svg {
   color: black !important;
 }
 
-/* --- */
+/*********************************************************/
 
 .menu-link {
   border-radius: 0px !important;
@@ -534,7 +547,7 @@ html[data-theme="light"] .form-checkbox:checked {
   background-color: black;
 }
 
-/* --- */
+/*********************************************************/
 
 html[data-theme="light"] .content .color-level {
   border: 1px solid black !important;
@@ -551,17 +564,77 @@ html[data-theme="light"] .custom-context-menu {
   border: 1px solid black !important;
 }
 html[data-theme="dark"] .custom-context-menu {
-  border: 1px solid white !important;
+  border: 1px solid #ffb012; 
+  padding: 1px; 
+  box-shadow: 0 0 1px 2px rgba(255, 176, 18, 0.75);
+  background-color: #fff; 
 }
 
-/* Code box */
-.dark-theme .CodeMirror,
-html[data-theme=dark] .CodeMirror {
+/*********************************************************
+            codemirror code blocks
+*********************************************************/
+.dark-theme .CodeMirror {
+  background: var(--ls-secondary-background-color);
+  color: var(--ls-primary-text-color)
+}
+.dark-theme .CodeMirror-scroll {
+  overflow-x: scroll !important;
+  overflow-y: hidden !important;
+  margin-bottom: -40px;
+  margin-right: -50px;
+  padding-bottom: 50px;
+  height: 100%;
+  outline: 0;
+  position: relative;
+}
+
+.dark-theme .CodeMirror-gutter,
+.dark-theme .CodeMirror-gutters,
+.dark-theme .CodeMirror-linenumber,
+.dark-theme .CodeMirror-scroll,
+.dark-theme .CodeMirror-sizer {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  background: linear-gradient(to left, #390000, #000000 50%, #000000 75%, #000000 75%);
+ }
+
+
+ .dark-theme .CodeMirror-gutters {
+  border-right: 1px solid #4e4e4e;
+  background-color: #ffcece;
+  white-space: nowrap;
+}
+.dark-theme .CodeMirror-linenumber {
+  padding: 0 3px 0 5px;
+  min-width: 20px;
+  text-align: right;
+  opacity: 1;
+  color: var(--ls-primary-text-color);
+  white-space: nowrap;
+}
+
+.extensions__code .CodeMirror {
+  background: var(--ls-secondary-background-color);
+  color: var(--ls-primary-text-color)
+}
+
+.extensions__code .CodeMirror {
+  z-index: 0;
+  height: auto;
+  padding: 15px 0 0 0;
+  font-family: Fira Code, Monaco, Menlo, Consolas, "COURIER NEW", monospace;
+  max-width: 86vw;
+  background-color: white;
+}
+
+
+.extensions__code-lang .CodeMirror {
   background: var(--ls-secondary-background-color);
   color: var(--ls-primary-text-color)
 }
 
 
+/*********************************************************/
 
 /* Blockquote */
 
