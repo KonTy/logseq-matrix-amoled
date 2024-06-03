@@ -35,7 +35,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Ensure GH_TOKEN is set in GitHub secrets
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release --no-ci
+          NPM_TOKEN: dummy
+        run: npx semantic-release --no-ci --skip-npm          
 
       - name: Get version from package.json
         id: get_version
