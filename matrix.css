@@ -81,11 +81,15 @@ html[data-theme="dark"],
   --ls-link-text-color: #affc6c;
   --ls-header-button-background: #74ff74; /* recent */
 
+  --ls-right-panel-background-color: #000000;
+  --ls-right-panel-gradient-color: #600000;
+
   --ls-sidebar-text-color: #9693ff;
   --ls-sidebar-link-text-color: #fff1e2;
 
   --ls-block-bullet-border-color: #00a982;
   --ls-block-bullet-color: #00ff91;
+  --ls-block-bullet-background-color: #ff7070;
   --ls-block-highlight-color: #9ec7ffb5;
   --ls-selection-background-color: #5ea0fc;
   --ls-selection-text-color: #ffffff;
@@ -191,7 +195,7 @@ div#right-sidebar {
 }
 
 .cp__sidebar-left-layout.is-open .left-sidebar-inner {
-  background: radial-gradient(circle, #600000, #000000);
+  background: radial-gradient(circle, var(--ls-right-panel-gradient-color), var(--ls-right-panel-background-color));
 }
 
 .left-sidebar-inner .new-page,
@@ -210,7 +214,7 @@ div#right-sidebar {
 }
 
 .cp__right-sidebar.is-open .right-sidebar-inner{
-  background: radial-gradient(circle, #600000, #000000);
+  background: radial-gradient(circle, var(--ls-right-panel-gradient-color), var(--ls-right-panel-background-color));
 }
 
 .cp__right-sidebar .sidebar-item {
@@ -219,7 +223,7 @@ div#right-sidebar {
 }
 
 .cp__right-sidebar {
-  color: var(white);
+  color: white;
 }
 
 .sidebar-item-list {
@@ -386,13 +390,6 @@ a.tooltip-priority:first-of-type::before {
 }
 /*********************************************************/
 
-
-
-
-
-
-
-
 /* Settings Menu */
 
 html[data-theme="dark"] .cp__header a,
@@ -447,8 +444,8 @@ html[data-theme="dark"] ::selection {
 /* Bullet container bullets */
 
 html[data-theme="dark"] .bullet-container .bullet {
-  background-color: var(--ls-secondary-background-color) !important;
-  color: var(---ls-secondary-text-color) !important;
+  background-color: var(--ls-block-bullet-background-color) !important;
+  color: var(--ls-block-bullet-color) !important;
 }
 
 html[data-theme="dark"] .bullet-container.as-order-list.typed-list .bullet {
