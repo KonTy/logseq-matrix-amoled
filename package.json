@@ -1,7 +1,7 @@
 {
     "name": "logseq-matrixamoled-theme",
     "author": "KonTy",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Matrix AMOLED theme, pure black background, no light theme",
     "logseq": {
         "themes": [
