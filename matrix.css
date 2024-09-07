@@ -98,8 +98,8 @@ html[data-theme="dark"],
   );  
 
 
-  --ls-main-content-max-width: 69%;
-  --ls-main-content-max-width-wide: 96%;
+  --ls-main-content-max-width: 96%;
+  --ls-main-content-max-width-wide: 1096%;
   --ls-font-family: "Only Emoji", "Source Sans 3 VF", "Source Han Sans VF", "sans-serif";
   --ct-text-size: 14px;
   --ct-line-height: normal;
@@ -473,7 +473,7 @@ html[data-theme="dark"] .dropdown-wrapper {
   border: 1px solid #ffb012; /* Optional: Add a solid border for better visibility */
   padding: 1px; /* Optional: Add padding to the element */
   box-shadow: 0 0 1px 2px rgba(255, 176, 18, 0.75); /* Create the glow effect */
-  background-color: #ffffff; /* Optional: Background color for the element */
+  background-color: #000000; /* Optional: Background color for the element */
 }
 
 /* Search box and modals */
@@ -488,15 +488,17 @@ html[data-theme="dark"] .absolute-modal {
 }
 html[data-theme="dark"] .ui__ac-group-name {
   color: white !important;
+  background-color: black !important;
 }
 html[data-theme="dark"] a.chosen {
-  background-color: white !important;
   color: black !important;
+  background-color: white !important;
 }
 html[data-theme="dark"] a.chosen p,
 html[data-theme="dark"] a.chosen .breadcrumb.block-parents a,
 html[data-theme="dark"] a.chosen .breadcrumb.block-parents svg {
-  color: black !important;
+  color: white !important;
+  background-color: black !important;
 }
 
 /*********************************************************/
